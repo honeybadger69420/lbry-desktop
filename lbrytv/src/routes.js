@@ -6,11 +6,11 @@ const send = require('koa-send');
 
 const router = new Router();
 
-router.get(`/$/embed/:claimName/:claimId`, async ctx => {
-  const { claimName, claimId } = ctx.params;
-  const streamUrl = generateStreamUrl(claimName, claimId, LBRY_TV_API);
-  ctx.redirect(streamUrl);
-});
+// router.get(`/$/embed/:claimName/:claimId`, async ctx => {
+//   const { claimName, claimId } = ctx.params;
+//   const streamUrl = generateStreamUrl(claimName, claimId, LBRY_TV_API);
+//   ctx.redirect(streamUrl);
+// });
 
 router.get('*', async ctx => {
   const html = await getHtml(ctx);

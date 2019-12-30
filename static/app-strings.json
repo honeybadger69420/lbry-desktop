@@ -909,5 +909,8 @@
   "Get %range% LBC": "Get %range% LBC",
   "Did something go wrong? Have a look in your log file, or send it to %support_link%.": "Did something go wrong? Have a look in your log file, or send it to %support_link%.",
   "%amount% LBC": "%amount% LBC",
-  "%amount% fee": "%amount% fee"
+  "%amount% fee": "%amount% fee",
+  "Woah, you have a lot of friends! You've claimed the maximum amount of referral rewards. Check back soon to see if more are available!.": "Woah, you have a lot of friends! You've claimed the maximum amount of referral rewards. Check back soon to see if more are available!.",
+  "1 file hidden due to your %content_viewing_preferences_link%": "1 file hidden due to your %content_viewing_preferences_link%",
+  "Install Now": "Install Now"
 }

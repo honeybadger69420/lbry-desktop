@@ -189,7 +189,11 @@ function VideoViewer(props: Props) {
     <div className="file-render__viewer" onContextMenu={stopContextMenu}>
       {!requireRedraw && (
         <div data-vjs-player>
-          {isAudio ? <audio ref={videoRef} className="video-js" /> : <video ref={videoRef} className="video-js" />}
+          {isAudio ? (
+            <audio ref={videoRef} className="video-js" />
+          ) : (
+            <video ref={videoRef} className="video-js vjs-16-9" />
+          )}
         </div>
       )}
     </div>
