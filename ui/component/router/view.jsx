@@ -1,32 +1,181 @@
 // @flow
 import * as PAGES from 'constants/pages';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Route, Redirect, Switch, withRouter } from 'react-router-dom';
-import SettingsPage from 'page/settings';
-import HelpPage from 'page/help';
-import ReportPage from 'page/report';
-import ShowPage from 'page/show';
-import PublishPage from 'page/publish';
-import DiscoverPage from 'page/discover';
+import loadable from '@loadable/component';
+
+const SettingsPage = loadable(() =>
+  import(
+    /* webpackChunkName: "chunk-SettingsPage" */
+    'page/settings'
+  )
+);
+
+const HelpPage = loadable(() =>
+  import(
+    /* webpackChunkName: "chunk-HelpPage" */
+    'page/help'
+  )
+);
+
+const ReportPage = loadable(() =>
+  import(
+    /* webpackChunkName: "chunk-ReportPage" */
+    'page/report'
+  )
+);
+
+const ShowPage = loadable(() =>
+  import(
+    /* webpackChunkName: "chunk-ShowPage" */
+    'page/show'
+  )
+);
+
+const PublishPage = loadable(() =>
+  import(
+    /* webpackChunkName: "chunk-PublishPage" */
+    'page/publish'
+  )
+);
+
+const DiscoverPage = loadable(() =>
+  import(
+    /* webpackChunkName: "chunk-DiscoverPage" */
+    'page/discover'
+  )
+);
+
+const RewardsPage = loadable(() =>
+  import(
+    /* webpackChunkName: "chunk-RewardsPage" */
+    'page/rewards'
+  )
+);
+
+const FileListDownloaded = loadable(() =>
+  import(
+    /* webpackChunkName: "chunk-FileListDownloaded" */
+    'page/fileListDownloaded'
+  )
+);
+
+const FileListPublished = loadable(() =>
+  import(
+    /* webpackChunkName: "chunk-FileListPublished" */
+    'page/fileListPublished'
+  )
+);
+
+const TransactionHistoryPage = loadable(() =>
+  import(
+    /* webpackChunkName: "chunk-TransactionHistoryPage" */
+    'page/transactionHistory'
+  )
+);
+
+const InvitePage = loadable(() =>
+  import(
+    /* webpackChunkName: "chunk-InvitePage" */
+    'page/invite'
+  )
+);
+
+const SearchPage = loadable(() =>
+  import(
+    /* webpackChunkName: "chunk-SearchPage" */
+
+    'page/search'
+  )
+);
+
+const LibraryPage = loadable(() =>
+  import(
+    /* webpackChunkName: "chunk-LibraryPage" */
+    'page/library'
+  )
+);
+
+const WalletPage = loadable(() =>
+  import(
+    /* webpackChunkName: "chunk-WalletPage" */
+    'page/wallet'
+  )
+);
+
+const TagsPage = loadable(() =>
+  import(
+    /* webpackChunkName: "chunk-TagsPage" */
+    'page/tags'
+  )
+);
+
+const TagsFollowingPage = loadable(() =>
+  import(
+    /* webpackChunkName: "chunk-TagsFollowingPage" */
+    'page/tagsFollowing'
+  )
+);
+
+const ChannelsFollowingPage = loadable(() =>
+  import(
+    /* webpackChunkName: "chunk-ChannelsFollowingPage" */
+    'page/channelsFollowing'
+  )
+);
+
+const ChannelsFollowingManagePage = loadable(() =>
+  import(
+    /* webpackChunkName: "chunk-ChannelsFollowingManagePage" */
+    'page/channelsFollowingManage'
+  )
+);
+
+const TagsFollowingManagePage = loadable(() =>
+  import(
+    /* webpackChunkName: "chunk-TagsFollowingManagePage" */
+    'page/tagsFollowingManage'
+  )
+);
+
+const ListBlockedPage = loadable(() =>
+  import(
+    /* webpackChunkName: "chunk-ListBlockedPage" */
+    'page/listBlocked'
+  )
+);
+
+const FourOhFourPage = loadable(() =>
+  import(
+    /* webpackChunkName: "chunk-FourOhFourPage" */
+
+    'page/fourOhFour'
+  )
+);
+const SignInPage = loadable(() =>
+  import(
+    /* webpackChunkName: "chunk-SignInPage" */
+
+    'page/signIn'
+  )
+);
+const SignInVerifyPage = loadable(() =>
+  import(
+    /* webpackChunkName: "chunk-SignInVerifyPage" */
+
+    'page/signInVerify'
+  )
+);
+const ChannelsPage = loadable(() =>
+  import(
+    /* webpackChunkName: "chunk-ChannelsPage" */
+
+    'page/channels'
+  )
+);
+
+const Loading = () => <div>Loading</div>;
 // import HomePage from 'page/home';
-import RewardsPage from 'page/rewards';
-import FileListDownloaded from 'page/fileListDownloaded';
-import FileListPublished from 'page/fileListPublished';
-import TransactionHistoryPage from 'page/transactionHistory';
-import InvitePage from 'page/invite';
-import SearchPage from 'page/search';
-import LibraryPage from 'page/library';
-import WalletPage from 'page/wallet';
-import TagsPage from 'page/tags';
-import TagsFollowingPage from 'page/tagsFollowing';
-import ChannelsFollowingPage from 'page/channelsFollowing';
-import ChannelsFollowingManagePage from 'page/channelsFollowingManage';
-import TagsFollowingManagePage from 'page/tagsFollowingManage';
-import ListBlockedPage from 'page/listBlocked';
-import FourOhFourPage from 'page/fourOhFour';
-import SignInPage from 'page/signIn';
-import SignInVerifyPage from 'page/signInVerify';
-import ChannelsPage from 'page/channels';
 
 // Tell the browser we are handling scroll restoration
 if ('scrollRestoration' in history) {
@@ -68,7 +217,7 @@ function AppRouter(props: Props) {
     isAuthenticated,
   } = props;
 
-  useEffect(() => {
+  React.useEffect(() => {
     window.scrollTo(0, currentScroll);
   }, [currentScroll, pathname]);
 
