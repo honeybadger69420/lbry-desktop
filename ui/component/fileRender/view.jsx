@@ -9,6 +9,7 @@ import AppViewer from 'component/viewers/appViewer';
 import Button from 'component/button';
 import { withRouter } from 'react-router-dom';
 import { formatLbryUrlForWeb } from 'util/url';
+import AutoplayCountdown from 'component/autoplayCountdown';
 // @if TARGET='web'
 import { generateStreamUrl } from 'util/lbrytv';
 // @endif
@@ -46,6 +47,10 @@ class FileRender extends React.PureComponent<Props> {
   constructor(props: Props) {
     super(props);
 
+    this.state = {
+      showAutoplayCountdown: false,
+    };
+
     (this: any).escapeListener = this.escapeListener.bind(this);
     (this: any).onEndedCb = this.onEndedCb.bind(this);
   }
@@ -75,7 +80,8 @@ class FileRender extends React.PureComponent<Props> {
   onEndedCb() {
     const { autoplay, nextUnplayed, history } = this.props;
     if (autoplay && nextUnplayed) {
-      history.push(formatLbryUrlForWeb(nextUnplayed));
+      this.setState({ showAutoplayCountdown: true });
+      // history.push(formatLbryUrlForWeb(nextUnplayed));
     }
   }
 
@@ -189,9 +195,11 @@ class FileRender extends React.PureComponent<Props> {
 
   render() {
     const { isText } = this.props;
+    const { showAutoplayCountdown } = this.state;
 
     return (
       <div className={classnames('file-render', { 'file-render--document': isText })}>
+        <AutoplayCountdown />
         <Suspense fallback={<div />}>{this.renderViewer()}</Suspense>
       </div>
     );
